@@ -1,10 +1,10 @@
-function check_length_string(str, length){
+function checkLengthString(str, length){
   if (str.length <= length){
     return true;
   }
   return false;
 }
 
-function is_palindrome(str){
-  return str === str.split('').reverse().join('');
+function isPalindrome(str){
+  return str.toLowerCase() === str.toLowerCase().split('').reverse().join('');
 }

@@ -10,10 +10,9 @@ function createRandomNumber (min, max) {
   const previousValues = [];
 
   return function () {
-    let currentValue = getRandomInteger(min, max);
-    if (previousValues.length >= (max - min + 1)) {
-      return null;
-    }
+    let currentValue = (min === -Number.MAX_VALUE) ?
+      (getRandomInteger(0, max) + getRandomInteger(min, 0)) :
+      getRandomInteger(min, max);
     while (previousValues.includes(currentValue)) {
       currentValue = getRandomInteger(min, max);
     }
@@ -22,4 +21,6 @@ function createRandomNumber (min, max) {
   };
 }
 
-export {getRandomInteger, createRandomNumber};
+const getRandomArrayElement = (elements) => elements(getRandomInteger(0, elements.length - 1));
+
+export {getRandomInteger, createRandomNumber, getRandomArrayElement};

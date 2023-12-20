@@ -1,2 +1,4 @@
 import './function.js';
-import {photoDescription} from './data.js';
+import {createPhotoDescription} from './data.js';
+
+const createPhotoDescriptionArray = () => Array.from({ length: 25}, createPhotoDescription);

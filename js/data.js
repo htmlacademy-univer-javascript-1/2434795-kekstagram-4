@@ -5,36 +5,37 @@ const ID = createRandomNumber(1, 25);
 const URL = createRandomNumber(1, 25);
 const ID_FOR_COMMENTS = createRandomNumber(-Number.MAX_VALUE, Number.MAX_VALUE);
 
-function createUrl(){
+const createUrl = function(){
   return `photos/${  URL()}.jpg`;
-}
+};
 
 
-function createDescription(){
+const createDescription = function(){
   return getRandomArrayElement(DESCRIPTION);
-}
+};
 
 
-function createAvatar(){
+const createAvatar = function(){
   return `img/avatar-${  getRandomInteger(1, 6)  }.svg`;
-}
+};
 
-function createMessage(){
+const createMessage = function(){
   return Array.from({ length: getRandomInteger(1, 2)}, () => getRandomArrayElement(MESSAGE)).join(' ');
-}
+};
 
-function createName(){
+const createName = function(){
   return getRandomArrayElement(NAMES);
-}
+};
+
 const createComment = () =>({
   id: ID_FOR_COMMENTS(),
   avatar: createAvatar(),
   message: createMessage(),
   name: createName()
 });
-function createComments(){
+const createComments = function(){
   return Array.from({length: getRandomInteger(0, 30)}, createComment());
-}
+};
 
 const createPhotoDescription = () => ({
   id: ID(),

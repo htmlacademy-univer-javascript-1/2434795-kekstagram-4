@@ -1,2 +1,5 @@
 import './function.js';
-import {photoDescription} from './data.js';
+import {createPhotoDescription} from './data.js';
+import {renderThumbnail} from './render-thumbnails.js';
+
+renderThumbnail(createPhotoDescription());

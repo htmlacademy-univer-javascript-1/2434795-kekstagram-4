@@ -48,6 +48,4 @@ const createPhotoDescription = () => ({
   likes: getRandomInteger(15, 200),
   comments: createComments()
 });
-const photoDescription = () => Array.from({length: PHOTO_DESSCRIPTIONS_COUNT}, createPhotoDescription);
-
-export {photoDescription};
+export {createPhotoDescription};

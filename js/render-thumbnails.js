@@ -9,6 +9,7 @@ const getThumbnailFromTemplate = (pictureInfo) => {
   picture.querySelector('.picture__img').alt = pictureInfo.description;
   picture.querySelector('.picture__likes').textContent = pictureInfo.likes;
   picture.querySelector('.picture__comments').textContent = pictureInfo.comments.length;
+  picture.dataset.id = pictureInfo.id;
 
   return picture;
 };

@@ -6,7 +6,7 @@ const URL = createRandomNumber(1, 25);
 const ID_FOR_COMMENTS = createRandomNumber(-Number.MAX_VALUE, Number.MAX_VALUE);
 
 function createUrl(){
-  return `photos/${  URL()}.jpg`;
+  return `photos/${URL}.jpg`;
 }
 
 
@@ -16,7 +16,7 @@ function createDescription(){
 
 
 function createAvatar(){
-  return `img/avatar-${  getRandomInteger(1, 6)  }.svg`;
+  return `img/avatar-${getRandomInteger(1, 6)}.svg`;
 }
 
 function createMessage(){

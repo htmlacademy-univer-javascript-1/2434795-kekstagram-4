@@ -1,47 +1,21 @@
-import {getRandomInteger, createRandomNumber, getRandomArrayElement} from './util.js';
-import {MESSAGE, NAMES, DESCRIPTION} from './consts.js';
+const NAMES = [
+  'Анатолий',
+  'Евгений',
+  'Федор',
+  'Анна',
+  'Александр',
+  'Дмитрий',
+  'Елена'];
 
-const ID = createRandomNumber(1, 25);
-const URL = createRandomNumber(1, 25);
-const ID_FOR_COMMENTS = createRandomNumber(-Number.MAX_VALUE, Number.MAX_VALUE);
+const SENTANCES = [
+  'Всё отлично!',
+  'В целом всё неплохо. Но не всё.',
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
+];
 
-function createUrl(){
-  return `photos/${  URL()}.jpg`;
-}
+const DESCRIPTIONS = ['ты', 'я', 'мы', 'вы', 'он', 'она', 'оно', 'они'];
 
-
-function createDescription(){
-  return getRandomArrayElement(DESCRIPTION);
-}
-
-
-function createAvatar(){
-  return `img/avatar-${  getRandomInteger(1, 6)  }.svg`;
-}
-
-function createMessage(){
-  return Array.from({ length: getRandomInteger(1, 2)}, () => getRandomArrayElement(MESSAGE)).join(' ');
-}
-
-function createName(){
-  return getRandomArrayElement(NAMES);
-}
-const createComment = () =>({
-  id: ID_FOR_COMMENTS(),
-  avatar: createAvatar(),
-  message: createMessage(),
-  name: createName()
-});
-function createComments(){
-  return Array.from({length: getRandomInteger(0, 30)}, createComment());
-}
-
-const createPhotoDescription = () => ({
-  id: ID(),
-  url: createUrl(),
-  description: createDescription(),
-  likes: getRandomInteger(15, 200),
-  comments: createComments()
-});
-
-export {createPhotoDescription};
+export {SENTANCES, NAMES, DESCRIPTIONS};

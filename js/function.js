@@ -1,15 +1,19 @@
-function checkLengthString(str, length){
+const checkLengthString = function (str, length){
   if (str.length <= length){
     return true;
   }
   return false;
-}
+};
 
-function isPalindrome(str){
+const isPalindrome = function (str){
   return str.toLowerCase() === str.toLowerCase().split('').reverse().join('');
-}
+};
 
-function meetingIsCorrect(begin, end, startMeeting, durationMeeting){
+const inputTimeToArray = function (inputTime){
+  return inputTime.split(':').map(Number);
+};
+
+const meetingIsCorrect = function (begin, end, startMeeting, durationMeeting){
   const beginArray = inputTimeToArray(begin);
   const endArray = inputTimeToArray(end);
   const startMeetingArray = inputTimeToArray(startMeeting);
@@ -22,8 +26,4 @@ function meetingIsCorrect(begin, end, startMeeting, durationMeeting){
   if (endOfMeetingArrray[0] == endArray[0] && endOfMeetingArrray[1] > endArray[1]) {return false;}
   if (endOfMeetingArrray[0] > endArray[0]) {return false;}
   return true;
-}
-
-function inputTimeToArray(inputTime){
-  return inputTime.split(':').map(Number);
-}
+};

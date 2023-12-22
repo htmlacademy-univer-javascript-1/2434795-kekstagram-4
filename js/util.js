@@ -1,12 +1,12 @@
-function getRandomInteger (min, max) {
+const getRandomInteger = function(min, max) {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
   const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
   const result = Math.random() * (upper - lower + 1) + lower;
 
   return Math.floor(result);
-}
+};
 
-function createRandomNumber (min, max) {
+const createRandomNumber = function(min, max) {
   const previousValues = [];
 
   return function () {
@@ -19,7 +19,7 @@ function createRandomNumber (min, max) {
     previousValues.push(currentValue);
     return currentValue;
   };
-}
+};
 
 const getRandomArrayElement = (elements) => elements(getRandomInteger(0, elements.length - 1));
 

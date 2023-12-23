@@ -1,26 +1,14 @@
-const getRandomInteger = function(min, max) {
-  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
-  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
-  const result = Math.random() * (upper - lower + 1) + lower;
+function getRandomNumber (max, min) {
+  return Math.round(Math.random() * (+max - +min + 1) + min);
+}
 
-  return Math.floor(result);
-};
+function getUniqRandomNumber (max, min, arr) {
+  let current = Math.random() * (+max - +min + 1) + min;
+  while (arr.includes(current)){
+    current = Math.random() * (+max - +min + 1) + min;
+  }
+  arr.push(current);
+  return Math.round(current);
+}
 
-const createRandomNumber = function(min, max) {
-  const previousValues = [];
-
-  return function () {
-    let currentValue = (min === -Number.MAX_VALUE) ?
-      (getRandomInteger(0, max) + getRandomInteger(min, 0)) :
-      getRandomInteger(min, max);
-    while (previousValues.includes(currentValue)) {
-      currentValue = getRandomInteger(min, max);
-    }
-    previousValues.push(currentValue);
-    return currentValue;
-  };
-};
-
-const getRandomArrayElement = (elements) => elements(getRandomInteger(0, elements.length - 1));
-
-export {getRandomInteger, createRandomNumber, getRandomArrayElement};
+export {getRandomNumber, getUniqRandomNumber};

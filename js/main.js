@@ -1,4 +1,4 @@
 import { drawSmall } from './draw.js';
-import '.formLogic.js';
+import './formLogic.js';
 
 drawSmall();

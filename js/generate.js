@@ -1,5 +1,5 @@
-import {getRandomNumber, getUniqRandomNumber} from './util';
-import { DESCRIPTIONS, SENTANCES, NAMES } from './data';
+import {getRandomNumber, getUniqRandomNumber} from './util.js';
+import { DESCRIPTIONS, SENTANCES, NAMES } from './data,js';
 
 const photos = [];
 const photosUrl = [];

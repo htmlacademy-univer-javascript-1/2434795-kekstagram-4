@@ -1,4 +1,5 @@
-import {STEP, MIN_SCALE_VALUE, MAX_SCALE_VALUE, DEFAULT_SCALE_VALUE} from '.data.js';
+import {STEP, MIN_SCALE_VALUE, MAX_SCALE_VALUE, DEFAULT_SCALE_VALUE} from './data.js';
+
 const smallerScaleButton = document.querySelector('.scale__control--smaller');
 const biggerScaleButton = document.querySelector('.scale__control--bigger');
 const scaleValue = document.querySelector('.scale__control--value');

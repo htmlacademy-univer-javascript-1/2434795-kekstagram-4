@@ -1,4 +1,6 @@
 import { closeFullPhoto } from './util.js';
+import { resetScale } from './scale.js';
+import { resetEffects } from './effects.js';
 
 const form = document.querySelector('.img-upload__form');
 const uploadingImgInput = form.querySelector('.img-upload__input');
@@ -82,5 +84,9 @@ form.addEventListener('submit', (evt) => {
 
   if(pristine.validate()){
     closeFullPhoto(overlayImg);
+    form.reset();
+    pristine.reset();
+    resetScale();
+    resetEffects();
   }
 });

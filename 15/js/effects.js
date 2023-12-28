@@ -1,6 +1,6 @@
 import { EFFECTS } from './data.js';
 
-const image = document.querySelector('.img_upload__preview img');
+const image = document.querySelector('.img-upload__preview img');
 const effectLevel = document.querySelector('.effect-level__value');
 const effects = document.querySelector('.effects');
 const effectsSlider = document.querySelector('.effect-level__slider');

@@ -1,35 +1,37 @@
-import {STEP, MIN_SCALE_VALUE, MAX_SCALE_VALUE, DEFAULT_SCALE_VALUE} from './data.js';
+import { Scale } from './constants.js';
+import { parseNumber } from './utils.js';
 
-const smallerScaleButton = document.querySelector('.scale__control--smaller');
-const biggerScaleButton = document.querySelector('.scale__control--bigger');
-const scaleValue = document.querySelector('.scale__control--value');
-const image = document.querySelector('.img-upload__preview img');
+const uploadOverlay = document.querySelector('.img-upload__overlay');
+const imageElement = uploadOverlay.querySelector('.img-upload__preview img');
+const scaleElement = uploadOverlay.querySelector('.img-upload__scale');
+const scaleValue = scaleElement.querySelector('.scale__control--value');
+const increaseScaleButton = scaleElement.querySelector('.scale__control--bigger');
+const reduceScaleButton = scaleElement.querySelector('.scale__control--smaller');
 
-const rescaleImage = (currentValue) => {
-  image.style.transform = `scale(${currentValue / 100})`;
-  scaleValue.value = `${currentValue}%`;
+const setImageScale = (scale) => {
+  imageElement.style.transform = `scale(${scale / 100})`;
+  scaleValue.value = `${scale}%`;
 };
 
-const smallerButtonClick = () => {
-  const currentValue = parseInt(scaleValue.value, 10);
-  let newValue = currentValue - STEP;
-  if(newValue < MIN_SCALE_VALUE){
-    newValue = MIN_SCALE_VALUE;
-  }
-  rescaleImage(newValue);
+const onZoomInClick = () => {
+  const scale = parseNumber(scaleValue.value);
+  const newScale = Math.min(scale + Scale.STEP_SCALE, Scale.MAX_SCALE);
+  setImageScale(newScale);
 };
 
-const biggerButtonClick = () => {
-  const currentValue = parseInt(scaleValue.value, 10);
-  let newValue = currentValue + STEP;
-  if(newValue > MAX_SCALE_VALUE){
-    newValue = MAX_SCALE_VALUE;
-  }
-  rescaleImage(newValue);
+const onZoomOutClick = () => {
+  const scale = parseNumber(scaleValue.value);
+  const newScale = Math.max(scale - Scale.STEP_SCALE, Scale.MIN_SCALE);
+  setImageScale(newScale);
 };
 
-smallerScaleButton.addEventListener('click', smallerButtonClick);
-biggerScaleButton.addEventListener('click', biggerButtonClick);
+export const destroyScale = () => {
+  increaseScaleButton.removeEventListener('click', onZoomInClick);
+  reduceScaleButton.removeEventListener('click', onZoomOutClick);
+};
 
-const resetScale = () => rescaleImage(DEFAULT_SCALE_VALUE);
-export {resetScale};
+export const initScale = () => {
+  setImageScale(Scale.DEFAULT_SCALE);
+  increaseScaleButton.addEventListener('click', onZoomInClick);
+  reduceScaleButton.addEventListener('click', onZoomOutClick);
+};
